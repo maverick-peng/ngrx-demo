@@ -1,0 +1,7 @@
+<ul *ngIf="pizzas$ | async as pizzas">
+  <li *ngFor="let pizza of pizzas">
+    <a [routerLink]="[pizza.id]">{{ pizza.name }}</a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>
