@@ -6,6 +6,8 @@ import { Route, RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store';
+import { EffectsModule } from '@ngrx/effects';
+import { effects } from './store/effects';
 
 const routes: Route[] = [
   {
@@ -21,6 +23,7 @@ const routes: Route[] = [
     CommonModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('products', reducers),
+    EffectsModule.forFeature(effects)
   ],
   exports: [],
 })

@@ -9,23 +9,7 @@ export interface PizzasState {
 }
 
 export const initialState: PizzasState = {
-  data: [
-    {
-      name: 'Hawaii',
-      id: 5,
-      toppings: [
-        {
-          name: 'sausage',
-          id: 6,
-        },
-        {
-          name: 'pineapple',
-          id: 8,
-        },
-        { name: 'cheese', id: 1 },
-      ],
-    },
-  ],
+  data: [],
   loaded: false,
   loading: false,
 };
@@ -49,10 +33,13 @@ export function reducer(
       };
     }
     case fromPizza.LOAD_PIZZAS_SUCCESS: {
+      const data = action.payload;
+
       return {
         ...state,
         loading: false,
         loaded: true,
+        data
       };
     }
   }

@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit {
   pizzas$: Observable<Pizza[]>;
 
   constructor(private store: Store<fromStore.ProductsState>) {
+    this.store.dispatch(new fromStore.LoadPizzas());
     this.pizzas$ = this.store.select(fromStore.getAllPizzas); // 注意無法直接select('pizzas'), 因為這個feature是lazy-loaded的
   }
 
