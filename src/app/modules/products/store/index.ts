@@ -1,3 +1,4 @@
+import { EntityState } from '@ngrx/entity';
 import {
   createSelector,
   createFeatureSelector,
@@ -7,15 +8,23 @@ import {
 import * as fromPizzas from './reducers/pizzas.reducer';
 
 export interface ProductsState {
-  pizzas: fromPizzas.PizzasState;
+  pizzas: fromPizzas.State;
 }
 
-export const reducers: ActionReducerMap<
-  ProductsState,
-  fromPizzas.LoadPizzasActions // eliminate imcompatible type complaining
-> = {
+export const reducers: ActionReducerMap<any> = {
   pizzas: fromPizzas.reducer,
 };
+
+// export interface ProductsState {
+//   pizzas: fromPizzas.State;
+// }
+
+// export const reducers: ActionReducerMap<
+//   ProductsState,
+//   fromPizzas.LoadPizzasActions // eliminate imcompatible type complaining
+// > = {
+//   pizzas: fromPizzas.reducer,
+// };
 
 export const getProductsState =
   createFeatureSelector<ProductsState>('products');
@@ -28,7 +37,7 @@ export const getPizzasState = createSelector(
 
 export const getAllPizzas = createSelector(
   getPizzasState,
-  fromPizzas.getPizzas
+  fromPizzas.selectAll
 );
 
 export const getPizzasLoaded = createSelector(
@@ -41,4 +50,4 @@ export const getPizzasLoading = createSelector(
   fromPizzas.getPizzasLoading
 );
 
-export * from './actions'
+export * from './actions';

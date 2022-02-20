@@ -23,7 +23,7 @@ import { EffectsModule } from '@ngrx/effects';
     StoreRouterConnectingModule.forRoot(),
     StoreModule.forRoot(reducer),
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ maxAge: 10 }),
+    StoreDevtoolsModule.instrument({ maxAge: 30 }),
   ],
   providers: [
     {
